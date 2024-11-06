@@ -14,7 +14,7 @@ public class Calcolo {
         System.out.println(result(operatori, operandi));
 
     }
-    public static int result(String[] operatori, String[] operandi ){
+    public static int result(String[] operatori, String[] operandi){
         int temp = 0;
         String[] operandi2 = Arrays.copyOf(operandi,operandi.length);
         for (int i = 0; i < operandi2.length; i++){
