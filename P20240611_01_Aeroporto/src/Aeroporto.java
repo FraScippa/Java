@@ -1,4 +1,4 @@
-import components.Aereo;
+import components.aereo.Aereo;
 import components.Compagnia;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public class Aeroporto {
 
     public static void main(String[] args) {
 
-        ArrayList<Aereo> aerei = new ArrayList<>(Arrays.asList(
+        /*ArrayList<Aereo> aerei = new ArrayList<>(Arrays.asList(
                     new Aereo(180),
                     new Aereo(170),
                     new Aereo(190),
@@ -25,6 +25,6 @@ public class Aeroporto {
 
         System.out.println(STR."numero aerei: \{Lufthansa.numAerei()}");
         Lufthansa.listAerei();
-    }
+    */}
 
 }
