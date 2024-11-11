@@ -1,6 +1,6 @@
-package components;
+package its.interfaccia_grafica.aeroporto.components;
 
-import components.aereo.Aereo;
+import its.interfaccia_grafica.aeroporto.components.aereo.Aereo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,10 @@ public class Compagnia {
     public Compagnia(boolean enablePrint) {
         this.enablePrint = enablePrint;
         this.aerei = new ArrayList<>();
+    }
+
+    public List<Aereo> getAerei() {
+        return aerei;
     }
 
     public Compagnia(List<Aereo> aerei, boolean enablePrint) {
@@ -31,7 +35,7 @@ public class Compagnia {
         this.enablePrint = enablePrint;
     }
 
-    public void addAerei(List<Aereo> l1) {
+    public void addAerei(final List<Aereo> l1) {
         l1.forEach(aereo -> addAereo(aereo)); //(this::addAereo) method references
         //lambda function(funzioni senza nome, non serve l'accessore.Chiamate come consumer)
     }
@@ -40,9 +44,9 @@ public class Compagnia {
         boolean added = aerei.add(aereo);
         if (enablePrint) {
             if (added) {
-                System.out.println(STR."l'aereo con ID: \{aereo.getEffID()} è stato aggiunto con successo");
+                System.out.println("l'aereo con ID: " + aereo.getEffID() + "è stato aggiunto con successo");
             } else {
-                System.out.println(STR."impossibile aggiungere l'aereo con ID: \{aereo.getEffID()}");
+                System.out.println("impossibile aggiungere l'aereo con ID: " + aereo.getEffID());
             }
         }
         return added;

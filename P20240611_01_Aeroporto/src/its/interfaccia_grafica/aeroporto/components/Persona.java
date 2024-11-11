@@ -1,4 +1,4 @@
-package components;
+package its.interfaccia_grafica.aeroporto.components;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,13 +8,11 @@ public class Persona {
     private String nome;
     private String cognome;
     private String email;
-
+    private Carta carta; //può essere nullo
     public static void main(String[] args) {
         Carta c1= new Carta("0000 0000 0000 0000", "000");
         System.out.println(c1);
     }
-
-
 
     private record Carta(String codice, String cvv) {
 
