@@ -31,7 +31,6 @@ public class Main {
         }
 
     }
-
     //1) Calcolare il numero totale di calorie assunte con questo menu
     //2) Costruire a partire da questo menu un pranzo per 50 persone,
     //dove ogni portata è composta da tre cibi presi a caso da questo menu.
