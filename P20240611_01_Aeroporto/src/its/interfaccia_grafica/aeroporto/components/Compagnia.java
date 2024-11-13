@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Compagnia {
+
+    private String nome;
     private List<Aereo> aerei;
     private boolean enablePrint;
     public Compagnia(boolean enablePrint) {
@@ -13,16 +15,23 @@ public class Compagnia {
         this.aerei = new ArrayList<>();
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
     public List<Aereo> getAerei() {
         return aerei;
     }
 
-    public Compagnia(List<Aereo> aerei, boolean enablePrint) {
+    public Compagnia(String nome, List<Aereo> aerei, boolean enablePrint) {
+        this.nome = nome;
         this.aerei = aerei;
         this.enablePrint = enablePrint;
     }
 
-    public Compagnia(List<Aereo> aerei) {
+    public Compagnia(String nome, List<Aereo> aerei) {
+        this.nome = nome;
         this.aerei = aerei;
         this.enablePrint = true;
     }
@@ -44,9 +53,9 @@ public class Compagnia {
         boolean added = aerei.add(aereo);
         if (enablePrint) {
             if (added) {
-                System.out.println("l'aereo con ID: " + aereo.getEffID() + "è stato aggiunto con successo");
+                System.out.println("L'aereo: " + aereo.getEffID() + " è stato aggiunto con successo");
             } else {
-                System.out.println("impossibile aggiungere l'aereo con ID: " + aereo.getEffID());
+                System.out.println("Impossibile aggiungere l'aereo con ID: " + aereo.getEffID());
             }
         }
         return added;
@@ -60,7 +69,9 @@ public class Compagnia {
         */
     }
     public void listAerei(){
-        aerei.forEach(System.out::println);
+        for (int i = 0; i < aerei.size(); i++) {
+            System.out.println(i+1 + ": " + aerei.get(i).toString());
+        }
     }
 
 }

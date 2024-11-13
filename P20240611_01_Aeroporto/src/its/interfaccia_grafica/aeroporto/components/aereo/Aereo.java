@@ -21,9 +21,10 @@ public abstract class Aereo {
     public String getEffID() {
         return baseVersion + effID;
     }
+
     @Override
     public String toString() {
-        return "Aereo: " + getEffID();
+        return getClass().getSimpleName() + " (" + getEffID() + ")";
     }
     public boolean addPasseggero(Persona passeggero){
         if (pDisp > 0) {

@@ -1,55 +1,67 @@
 package its.interfaccia_grafica.aeroporto.components;
 
 import its.interfaccia_grafica.aeroporto.components.aereo.Aereo;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Biglietteria {
-    private final Agenzia agenz;
+    private final Agenzia agenzia;
 
-    public void prenotaPosti(int num, int nPosti, @Nullable Persona pass1, @Nullable List<Persona> pass) {
-        switch (num) {
+    public void prenotaPosti(Object pass) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Compagnia 1: " + agenzia.getComp1() + ", Compagnia 2: " + agenzia.getComp2());
+        System.out.println("Selezionare 1 compagnia: ");
+        int compagnia = scanner.nextInt();
+        switch (compagnia) {
             case 1 -> {
-                Compagnia comp1 = agenz.getComp1();
-                comp1.listAerei();
-                System.out.println("selezionare l'aereo desiderato con un numero: ");
-                Scanner scanner = new Scanner(System.in);
-                int scelta = scanner.nextInt();
-                if (scelta <= comp1.numAerei()) {
-                    Aereo a1 = comp1.getAerei().get(scelta);
-                    if (pass1 != null) {
-                        a1.addPasseggero(pass1);
-                        System.out.println("Il passeggero" + pass1 + "è stato aggiunto con successo all'aereo" + a1);
-                    } else {
-                        a1.addPasseggeri("I passeggeri" + pass + "sono stati aggiunti con successo all'aereo" + a1);
-                    }
-                }
+                Compagnia comp = agenzia.getComp1();
+                typeCheck(pass, comp);
             }
             case 2 -> {
-                Compagnia comp2 = agenz.getComp2();
-                comp2.listAerei();
-                System.out.println("selezionare l'aereo desiderato con un numero: ");
-                Scanner scanner = new Scanner(System.in);
-                int scelta = scanner.nextInt();
-                if (scelta <= comp2.numAerei()) {
-                    Aereo a1 = comp2.getAerei().get(scelta);
-                    if (pass1 != null) {
-                        a1.addPasseggero(pass1);
-                        System.out.println("Il passeggero" + pass1 + "è stato aggiunto con successo all'aereo" + a1);
-                    } else {
-                        a1.addPasseggeri("I passeggeri" + pass + "sono stati aggiunti con successo all'aereo" + a1);
-                    }
-                }
-
+                Compagnia comp = agenzia.getComp2();
+                typeCheck(pass, comp);
             }
         }
     }
+    @SuppressWarnings("unchecked")
+    private void typeCheck(Object pass, Compagnia comp) {
+        if (pass instanceof Persona passeggero) {
+            complPrenotazione(passeggero, comp);
+        } else if (pass instanceof List<?> lista && lista.getFirst() instanceof Persona){
+            complPrenotazione((List<Persona>) lista, comp);
+        } else {
+            System.out.println("Tipo non supportato");
+        }
+    }
+    private static void complPrenotazione(@NotNull List<Persona> pass, @NotNull Compagnia comp) {
+        comp.listAerei();
+        System.out.println("selezionare l'aereo desiderato con un numero: ");
+        Scanner scanner = new Scanner(System.in);
+        int scelta = scanner.nextInt();
+        if (scelta <= comp.numAerei()) {
+            Aereo a1 = comp.getAerei().get(scelta-1);
+            a1.addPasseggeri(pass);
+            System.out.println("I passeggeri " + pass + " sono stati aggiunti con successo all'" + a1);
+        }
+    }
+    private static void complPrenotazione(@NotNull Persona pass, @NotNull Compagnia comp) {
+        comp.listAerei();
+        System.out.println("selezionare l'aereo desiderato con un numero: ");
+        Scanner scanner = new Scanner(System.in);
+        int scelta = scanner.nextInt();
+        if (scelta <= comp.numAerei()) {
+            Aereo a1 = comp.getAerei().get(scelta-1);
+            a1.addPasseggero(pass);
+            System.out.println("Il passeggero " + pass + " è stato aggiunto con successo all'" + a1);
+        }
+    }
 
-    public Biglietteria(Agenzia agenz) {
-        this.agenz = agenz;
+    public Biglietteria(Agenzia agenzia) {
+        this.agenzia = agenzia;
     }
     public Agenzia getAgenz() {
-        return agenz;
+        return agenzia;
     }}
