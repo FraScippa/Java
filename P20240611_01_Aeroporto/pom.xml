@@ -14,8 +14,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
+    <dependencies> <!-- Gestore di librerie -->
+        <dependency> <!-- Libreria -->
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>20</version> <!-- Sostituisci con la versione di JavaFX che stai utilizzando -->
@@ -26,6 +26,17 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.18.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>

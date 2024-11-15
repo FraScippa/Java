@@ -1,0 +1,35 @@
+{
+    "nome": "peppino",
+    "posti": 42,
+    "passeggeri": [
+      {
+        "nome": "Gino",
+        "cognome": "Lelli",
+        "email": "gino.lelli69@eskere11.com",
+        "carta": {
+          "codice": "0000 0000 0000 0000",
+          "cvv": "090"
+        }
+      },
+      {
+        "nome": "Peppino",
+        "cognome": "Lelli",
+        "email": "peppino86.lelli@drip17.com",
+        "carta": {
+          "codice": "1000 0000 0000 0000",
+          "cvv": "340"
+        }
+
+      },
+      {
+        "nome": "Ciro",
+        "cognome": "Lelli",
+        "email": "ciro.forzanapoli@yahoo.com",
+        "carta": {
+          "codice": "2000 0000 0000 0000",
+          "cvv": "104"
+        }
+
+      }
+    ]
+}

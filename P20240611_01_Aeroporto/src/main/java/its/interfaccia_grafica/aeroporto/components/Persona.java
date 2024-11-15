@@ -1,9 +1,13 @@
 package its.interfaccia_grafica.aeroporto.components;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Persona {
+public class Persona implements Serializable {
 
     private String nome;
     private String cognome;
@@ -17,18 +21,21 @@ public class Persona {
         this.carta = new Carta(carta);
     }
 
+    @JsonCreator
+    public Persona(@JsonProperty("nome") String nome, @JsonProperty("cognome") String cognome, @JsonProperty("email") String email,@JsonProperty ("carta") Carta carta) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.carta = carta;
+    }
+
 
     @Override
     public String toString() {
         return nome + " " + cognome;
     }
 
-    public static void main(String[] args) {
-        Carta c1= new Carta("0000 0000 0000 0000", "000");
-        System.out.println(c1);
-    }
-
-    private record Carta(String codice, String cvv) {
+    public record Carta(String codice, String cvv) {
 
         public Carta(String codice, String cvv) {
             this.codice = checkCodice(codice) ? codice : null;
